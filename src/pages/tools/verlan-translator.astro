@@ -1,0 +1,377 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Verlan Translator - French Slang";
+const description = "Interactive tool to convert French words to their verlan equivalents and decode verlan back to standard French.";
+---
+
+<BaseLayout title={title} description={description}>
+  <style>
+    .tool-hero {
+      background: #ffffff;
+      padding: 3rem;
+      border-bottom: 1px solid #e8e6e0;
+      text-align: center;
+    }
+
+    .tool-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+    }
+
+    .tool-hero p {
+      font-size: 1.1rem;
+      color: #5a5a5a;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .tool-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .translator-box {
+      background: #f8f7f5;
+      padding: 2rem;
+      border: 1px solid #e8e6e0;
+      margin-bottom: 2rem;
+    }
+
+    .input-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group label {
+      display: block;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #2b2b2b;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+      border: 2px solid #d4d0c8;
+      font-family: 'Crimson Text', Georgia, serif;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: #2b2b2b;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: #2b2b2b;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: #4a4a4a;
+    }
+
+    .result-box {
+      background: #ffffff;
+      padding: 1.5rem;
+      border: 2px solid #2b2b2b;
+      margin-top: 1rem;
+      min-height: 60px;
+    }
+
+    .result-box h3 {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a8a8a;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-box .result {
+      font-size: 1.5rem;
+      color: #1a1a1a;
+      font-weight: 700;
+    }
+
+    .common-terms {
+      margin-top: 3rem;
+    }
+
+    .common-terms h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid #e8e6e0;
+    }
+
+    .terms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .term-card {
+      background: #ffffff;
+      padding: 1rem;
+      border: 1px solid #e8e6e0;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .term-card:hover {
+      border-color: #2b2b2b;
+      transform: translateY(-2px);
+    }
+
+    .term-card .french {
+      font-size: 1.1rem;
+      color: #5a5a5a;
+    }
+
+    .term-card .verlan {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .note {
+      background: #f8f7f5;
+      padding: 1.5rem;
+      border-left: 3px solid #2b2b2b;
+      margin: 2rem 0;
+      font-style: italic;
+      color: #4a4a4a;
+    }
+
+    @media (max-width: 968px) {
+      .tool-hero {
+        padding: 2rem;
+      }
+
+      .tool-hero h1 {
+        font-size: 1.75rem;
+      }
+
+      .tool-container {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+
+  <div class="tool-hero">
+    <h1>Verlan Translator</h1>
+    <p>Convert French words to their verlan equivalents and decode verlan back to standard French. Enter a word to see the transformation.</p>
+  </div>
+
+  <div class="tool-container">
+    <div class="translator-box">
+      <div class="input-group">
+        <label for="input-word">Enter a French word or verlan term:</label>
+        <input type="text" id="input-word" placeholder="e.g., femme, meuf, lourd, relou..." />
+      </div>
+      <button class="btn" onclick="translateWord()">Translate</button>
+      <button class="btn" onclick="clearResult()" style="background: #666; margin-left: 0.5rem;">Clear</button>
+
+      <div class="result-box" id="result-box" style="display: none;">
+        <h3 id="result-label">Result:</h3>
+        <div class="result" id="result-text"></div>
+        <p id="result-note" style="margin-top: 0.5rem; font-size: 0.95rem; color: #5a5a5a;"></p>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Note:</strong> This translator contains common verlan terms in its database. For words not in the database, it attempts algorithmic transformation, but results may not reflect natural French usage. Verlan formation follows complex phonological rules that resist simple automation.
+    </div>
+
+    <div class="common-terms">
+      <h2>Common Terms (Click to Translate)</h2>
+      <div class="terms-grid">
+        <div class="term-card" onclick="setInput('femme')">
+          <div class="french">femme →</div>
+          <div class="verlan">meuf</div>
+        </div>
+        <div class="term-card" onclick="setInput('lourd')">
+          <div class="french">lourd →</div>
+          <div class="verlan">relou</div>
+        </div>
+        <div class="term-card" onclick="setInput('fou')">
+          <div class="french">fou →</div>
+          <div class="verlan">ouf</div>
+        </div>
+        <div class="term-card" onclick="setInput('mère')">
+          <div class="french">mère →</div>
+          <div class="verlan">reum</div>
+        </div>
+        <div class="term-card" onclick="setInput('père')">
+          <div class="french">père →</div>
+          <div class="verlan">reup</div>
+        </div>
+        <div class="term-card" onclick="setInput('flic')">
+          <div class="french">flic →</div>
+          <div class="verlan">keuf</div>
+        </div>
+        <div class="term-card" onclick="setInput('arabe')">
+          <div class="french">arabe →</div>
+          <div class="verlan">beur</div>
+        </div>
+        <div class="term-card" onclick="setInput('bizarre')">
+          <div class="french">bizarre →</div>
+          <div class="verlan">zarbi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    // Database of common verlan terms
+    const verlanDB = {
+      // French to Verlan
+      'femme': { verlan: 'meuf', note: 'Very common, mainstream usage' },
+      'lourd': { verlan: 'relou', note: 'Common; means "annoying" in slang' },
+      'fou': { verlan: 'ouf', note: 'Common; can mean "awesome" or "crazy"' },
+      'mère': { verlan: 'reum', note: 'Informal but widely accepted' },
+      'père': { verlan: 'reup', note: 'Informal but widely accepted' },
+      'flic': { verlan: 'keuf', note: 'Common slang for police' },
+      'mec': { verlan: 'keum', note: 'Common term for "guy"' },
+      'arabe': { verlan: 'beur', note: 'Complex social usage - see glossary' },
+      'noir': { verlan: 'renoi', note: 'Identity term - use with caution' },
+      'bizarre': { verlan: 'zarbi', note: 'Very common' },
+      'dingue': { verlan: 'guedin', note: 'Common term for crazy/wild' },
+      'argent': { verlan: 'geuar', note: 'Informal term for money' },
+      'travail': { verlan: 'vailtra', note: 'Informal' },
+      'pote': { verlan: 'tepo', note: 'Common term for friend' },
+      'frère': { verlan: 'reuf', note: 'Common, also used for close friends' },
+      'soeur': { verlan: 'reus', note: 'Informal' },
+      'fille': { verlan: 'iffeul', note: 'Less common than "meuf"' },
+      'moche': { verlan: 'chemo', note: 'Informal' },
+      'chiant': { verlan: 'ianch', note: 'Vulgar - use caution' },
+      'police': { verlan: 'licepo', note: 'Informal' },
+      'prison': { verlan: 'zépron', note: 'Informal' },
+      // Verlan to French (reverse lookup)
+      'meuf': { french: 'femme', note: 'Very common, mainstream usage' },
+      'relou': { french: 'lourd', note: 'Means "annoying" in verlan usage' },
+      'ouf': { french: 'fou', note: 'Can mean "awesome" or "crazy"' },
+      'reum': { french: 'mère', note: 'Informal but widely accepted' },
+      'reumé': { french: 'mère', note: 'Variant spelling' },
+      'reup': { french: 'père', note: 'Informal but widely accepted' },
+      'reupé': { french: 'père', note: 'Variant spelling' },
+      'keuf': { french: 'flic', note: 'Common slang for police' },
+      'keum': { french: 'mec', note: 'Common term for "guy"' },
+      'beur': { french: 'arabe', note: 'Complex social usage' },
+      'rebeu': { french: 'arabe', note: 'Double verlan form' },
+      'renoi': { french: 'noir', note: 'Identity term - use with caution' },
+      'zarbi': { french: 'bizarre', note: 'Very common' },
+      'guedin': { french: 'dingue', note: 'Common term for crazy/wild' },
+      'geuar': { french: 'argent', note: 'Informal term for money' },
+      'gueus': { french: 'argent', note: 'Variant' },
+      'tepo': { french: 'pote', note: 'Common term for friend' },
+      'reuf': { french: 'frère', note: 'Common, also used for close friends' },
+      'reus': { french: 'soeur', note: 'Informal' },
+      'iffeul': { french: 'fille', note: 'Less common than "meuf"' },
+      'chemo': { french: 'moche', note: 'Informal' },
+      'ianch': { french: 'chiant', note: 'Vulgar - use caution' },
+      'licepo': { french: 'police', note: 'Informal' },
+      'zépron': { french: 'prison', note: 'Informal' },
+    };
+
+    function translateWord() {
+      const input = document.getElementById('input-word').value.toLowerCase().trim();
+      const resultBox = document.getElementById('result-box');
+      const resultLabel = document.getElementById('result-label');
+      const resultText = document.getElementById('result-text');
+      const resultNote = document.getElementById('result-note');
+
+      if (!input) {
+        resultText.textContent = 'Please enter a word';
+        resultNote.textContent = '';
+        resultBox.style.display = 'block';
+        return;
+      }
+
+      // Check if in database
+      if (verlanDB[input]) {
+        const entry = verlanDB[input];
+        if (entry.verlan) {
+          resultLabel.textContent = 'Verlan form:';
+          resultText.textContent = entry.verlan;
+        } else {
+          resultLabel.textContent = 'Standard French:';
+          resultText.textContent = entry.french;
+        }
+        resultNote.textContent = entry.note || '';
+        resultBox.style.display = 'block';
+        return;
+      }
+
+      // Try algorithmic transformation
+      const attemptedVerlan = attemptVerlanTransform(input);
+      resultLabel.textContent = 'Algorithmic transformation (experimental):';
+      resultText.textContent = attemptedVerlan;
+      resultNote.textContent = 'Note: This is an algorithmic guess and may not reflect actual French usage. When in doubt, consult a native speaker or the glossary.';
+      resultBox.style.display = 'block';
+    }
+
+    function attemptVerlanTransform(word) {
+      // Simple syllable reversal attempt
+      // This is a simplified approximation - real verlan follows complex phonological rules
+      if (word.length < 3) return word;
+      
+      // Try to split at vowel clusters
+      const vowels = 'aeiouyéèêàâôùû';
+      let splitPoint = -1;
+      
+      for (let i = 1; i < word.length - 1; i++) {
+        if (!vowels.includes(word[i]) && vowels.includes(word[i+1])) {
+          splitPoint = i + 1;
+          break;
+        }
+      }
+      
+      if (splitPoint === -1) {
+        splitPoint = Math.floor(word.length / 2);
+      }
+      
+      const first = word.substring(0, splitPoint);
+      const second = word.substring(splitPoint);
+      
+      return second + first;
+    }
+
+    function setInput(word) {
+      document.getElementById('input-word').value = word;
+      translateWord();
+    }
+
+    function clearResult() {
+      document.getElementById('input-word').value = '';
+      document.getElementById('result-box').style.display = 'none';
+    }
+
+    // Allow Enter key to trigger translation
+    document.getElementById('input-word').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        translateWord();
+      }
+    });
+  </script>
+</BaseLayout>

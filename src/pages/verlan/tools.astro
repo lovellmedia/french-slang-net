@@ -1,0 +1,177 @@
+---
+import TopicLayout from '../../layouts/TopicLayout.astro';
+
+const title = "Verlan Tools & Resources";
+const description = "Interactive tools for learning French verlan: translators, quizzes, pronunciation guides, and practical learning resources.";
+
+const relatedTopics = [
+  { title: "Overview", url: "/verlan/" },
+  { title: "Ontology & Glossary", url: "/verlan/ontology/" },
+  { title: "Current Trends", url: "/verlan/trends/" },
+  { title: "Challenges & Solutions", url: "/verlan/challenges/" },
+];
+
+const keyPoints = [
+  "Interactive verlan translator",
+  "Practice quizzes with scoring",
+  "Difficulty-based exercises",
+  "Pronunciation guides",
+];
+---
+
+<TopicLayout 
+  title={title} 
+  description={description}
+  topic="Verlan"
+  pillar="Tools & Resources"
+  relatedTopics={relatedTopics}
+  keyPoints={keyPoints}
+>
+  <h2>Interactive Learning Tools</h2>
+
+  <p>This page serves as your gateway to practical verlan learning resources. Whether you're a French learner seeking to understand authentic speech, a linguist studying language games, or simply curious about French slang, these tools provide hands-on engagement with verlan mechanics and vocabulary.</p>
+
+  <h2>Available Tools</h2>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+    <div style="background: #f8f7f5; padding: 1.5rem; border: 1px solid #e8e6e0;">
+      <h3 style="margin-bottom: 0.75rem;">🔄 Verlan Translator</h3>
+      <p style="margin-bottom: 1rem;">Convert French words to their verlan equivalents and back. Includes a database of common terms and attempts algorithmic transformation for new words.</p>
+      <a href="/tools/verlan-translator/" style="display: inline-block; padding: 0.5rem 1rem; background: #2b2b2b; color: white; text-decoration: none; font-family: 'Lato', sans-serif; font-size: 0.85rem;">Launch Translator →</a>
+    </div>
+
+    <div style="background: #f8f7f5; padding: 1.5rem; border: 1px solid #e8e6e0;">
+      <h3 style="margin-bottom: 0.75rem;">📝 Verlan Quiz</h3>
+      <p style="margin-bottom: 1rem;">Test your knowledge with multiple-choice quizzes organized by difficulty level. Track your progress and identify areas for improvement.</p>
+      <a href="/tools/verlan-quiz/" style="display: inline-block; padding: 0.5rem 1rem; background: #2b2b2b; color: white; text-decoration: none; font-family: 'Lato', sans-serif; font-size: 0.85rem;">Start Quiz →</a>
+    </div>
+  </div>
+
+  <h2>Learning Resources</h2>
+
+  <h3>Beginner's Path</h3>
+
+  <p>If you're new to verlan, we recommend this learning sequence:</p>
+
+  <ol>
+    <li><strong>Start with the <a href="/verlan/">Overview</a></strong> - Understand what verlan is and how it works conceptually</li>
+    <li><strong>Learn high-frequency terms</strong> - Focus on common words like "meuf," "relou," and "ouf" before attempting complex formations</li>
+    <li><strong>Practice recognition</strong> - Use the <a href="/tools/verlan-quiz/">quiz tool</a> to build your recognition vocabulary</li>
+    <li><strong>Study the <a href="/verlan/ontology/">glossary</a></strong> - Reference the ontology for systematic vocabulary building</li>
+    <li><strong>Explore authentic media</strong> - Listen to French hip-hop, watch contemporary films with verlan-heavy dialogue</li>
+  </ol>
+
+  <h3>Intermediate Study</h3>
+
+  <p>Once you have basic recognition, deepen your understanding:</p>
+
+  <ul>
+    <li><strong>Read the <a href="/verlan/technical-deep-dive/">Technical Deep-Dive</a></strong> - Understand the phonological mechanisms</li>
+    <li><strong>Practice with the <a href="/tools/verlan-translator/">translator</a></strong> - Try predicting verlan forms before checking</li>
+    <li><strong>Study regional variations</strong> - Note how verlan differs across French-speaking regions</li>
+    <li><strong>Learn register awareness</strong> - Understand which terms are appropriate in which contexts</li>
+  </ul>
+
+  <h3>Advanced Resources</h3>
+
+  <p>For linguists and serious students:</p>
+
+  <ul>
+    <li><strong><a href="/verlan/history/">Historical analysis</a></strong> - Trace verlan's evolution from 19th-century roots to present</li>
+    <li><strong><a href="/verlan/trends/">Current research</a></strong> - Examine contemporary developments and future directions</li>
+    <li><strong>Primary sources</strong> - Analyze verlan in French hip-hop lyrics, cinema, and literature</li>
+  </ul>
+
+  <h2>Reference Materials</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Resource</th>
+        <th>Description</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Complete Glossary</td>
+        <td>Comprehensive verlan dictionary with 100+ terms</td>
+        <td><a href="/verlan/ontology/">Ontology & Knowledge Base</a></td>
+      </tr>
+      <tr>
+        <td>Formation Rules</td>
+        <td>Technical explanation of verlan mechanics</td>
+        <td><a href="/verlan/technical-deep-dive/">Technical Deep-Dive</a></td>
+      </tr>
+      <tr>
+        <td>Historical Timeline</td>
+        <td>Evolution from 1980s to present</td>
+        <td><a href="/verlan/history/">History & Evolution</a></td>
+      </tr>
+      <tr>
+        <td>Usage Guidelines</td>
+        <td>When and how to use verlan appropriately</td>
+        <td><a href="/verlan/challenges/">Challenges & Solutions</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>External Resources</h2>
+
+  <p>While this site aims to be comprehensive, these external resources provide additional perspectives:</p>
+
+  <ul>
+    <li><a href="https://en.wikipedia.org/wiki/Verlan" target="_blank">Wikipedia: Verlan</a> - General overview with linguistic context</li>
+    <li><a href="https://www.france24.com/en/" target="_blank">France 24</a> - French news media where verlan occasionally appears in authentic contexts</li>
+    <li><a href="https://www.arretsurimages.net/" target="_blank">Arrêt sur Images</a> - French media analysis that sometimes discusses language trends</li>
+  </ul>
+
+  <h2>Recommended Media for Verlan Exposure</h2>
+
+  <h3>Music</h3>
+
+  <ul>
+    <li><strong>IAM</strong> - Marseille hip-hop pioneers; complex lyrics rich with verlan</li>
+    <li><strong>NTM</strong> - Raw Parisian suburban verlan from the 1990s</li>
+    <li><strong>MC Solaar</strong> - More accessible hip-hop with clear verlan usage</li>
+    <li><strong>Damso</strong> - Contemporary Belgian-Congolese artist using modern verlan</li>
+    <li><strong>Jul</strong> - Massively popular Marseille rapper; verlan-heavy</li>
+  </ul>
+
+  <h3>Film</h3>
+
+  <ul>
+    <li><strong><em>La Haine</em> (1995)</strong> - Classic portrayal of suburban youth; dense with verlan</li>
+    <li><strong><em>Les Misérables</em> (2019)</strong> - Contemporary suburban drama with authentic dialogue</li>
+    <li><strong><em>Intouchables</em> (2011)</strong> - More accessible; some verlan in casual dialogue</li>
+  </ul>
+
+  <h2>Learning Tips</h2>
+
+  <h3>Do:</h3>
+
+  <ul>
+    <li>Focus on recognition before production—understand verlan before trying to use it</li>
+    <li>Learn terms in context rather than as isolated vocabulary</li>
+    <li>Pay attention to register—know which terms are mainstream vs. edgy</li>
+    <li>Practice with the interactive tools regularly</li>
+    <li>Expose yourself to authentic French media</li>
+  </ul>
+
+  <h3>Don't:</h3>
+
+  <ul>
+    <li>Don't overuse verlan as a non-native speaker—it can sound affected</li>
+    <li>Don't use terms you don't fully understand, especially those with social identity implications</li>
+    <li>Don't assume verlan is appropriate in formal or professional contexts</li>
+    <li>Don't rely solely on verlan for authentic communication—it's one component of French fluency</li>
+  </ul>
+
+  <blockquote>
+    "The goal of learning verlan is not to replace standard French but to expand your communicative competence—to understand the full range of French expression and to navigate different social contexts with appropriate language choices."
+  </blockquote>
+
+  <h2>Get Started</h2>
+
+  <p>Ready to begin? Start with the <a href="/tools/verlan-translator/">Verlan Translator</a> to explore how words transform, then test yourself with the <a href="/tools/verlan-quiz/">Verlan Quiz</a>. For systematic study, work through the <a href="/verlan/ontology/">glossary</a> by category.</p>
+</TopicLayout>

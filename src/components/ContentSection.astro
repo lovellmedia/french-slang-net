@@ -1,0 +1,95 @@
+---
+---
+
+<div class="content-section">
+  <slot />
+</div>
+
+<style>
+  .content-section {
+    font-size: 1.1rem;
+    color: #3a3a3a;
+    line-height: 1.8;
+  }
+
+  .content-section :global(h2) {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e8e6e0;
+  }
+
+  .content-section :global(h3) {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #2b2b2b;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .content-section :global(p) {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+  }
+
+  .content-section :global(ul), 
+  .content-section :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+
+  .content-section :global(li) {
+    margin-bottom: 0.75rem;
+  }
+
+  .content-section :global(a) {
+    color: #2b5a8c;
+    text-decoration: underline;
+    text-decoration-color: #b8c5d6;
+  }
+
+  .content-section :global(a:hover) {
+    text-decoration-color: #2b5a8c;
+  }
+
+  .content-section :global(blockquote) {
+    background: #f8f7f5;
+    padding: 1.5rem;
+    border-left: 3px solid #2b2b2b;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #4a4a4a;
+  }
+
+  .content-section :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    background: #ffffff;
+  }
+
+  .content-section :global(th) {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid #2b2b2b;
+    background: #f8f7f5;
+    font-weight: 700;
+  }
+
+  .content-section :global(td) {
+    padding: 1rem;
+    border-bottom: 1px solid #e8e6e0;
+    font-size: 1rem;
+  }
+
+  .content-section :global(tr:last-child td) {
+    border-bottom: 2px solid #2b2b2b;
+  }
+</style>

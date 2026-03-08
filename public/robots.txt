@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://french-slang.net/sitemap-index.xml

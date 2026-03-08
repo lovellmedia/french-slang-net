@@ -1,0 +1,274 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "French Slang - The Complete Guide to French Colloquialisms";
+const description = "Discover the fascinating world of French verlan and colloquialisms. From syllable reversal to modern slang evolution, explore the linguistic innovation of French street language.";
+---
+
+<BaseLayout title={title} description={description}>
+  <style>
+    .hero {
+      background: #ffffff;
+      padding: 5rem 3rem;
+      border-bottom: 1px solid #e8e6e0;
+    }
+
+    .hero .container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.75rem;
+      color: #8a8a8a;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #1a1a1a;
+      margin-bottom: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.35rem;
+      color: #5a5a5a;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      color: #3a3a3a;
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: #2b2b2b;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background 0.2s;
+    }
+
+    .hero-cta:hover {
+      background: #4a4a4a;
+    }
+
+    .pillar-section {
+      padding: 4.5rem 3rem;
+    }
+
+    .pillar-section:nth-child(even) {
+      background: #ffffff;
+    }
+
+    .pillar-section .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-number {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      color: #a8a8a8;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+    }
+
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .pillar-card {
+      background: #f8f7f5;
+      padding: 2rem;
+      border: 1px solid #e8e6e0;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .pillar-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.75rem;
+    }
+
+    .pillar-card p {
+      font-size: 1rem;
+      color: #5a5a5a;
+      line-height: 1.6;
+    }
+
+    .abstract-box {
+      background: #ffffff;
+      padding: 3rem;
+      border: 1px solid #e8e6e0;
+    }
+
+    .abstract-box h3 {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #2b2b2b;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .abstract-box p {
+      font-size: 1.1rem;
+      color: #3a3a3a;
+      margin-bottom: 1.25rem;
+      text-align: justify;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 968px) {
+      .hero {
+        padding: 3rem 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .pillar-section {
+        padding: 3rem 2rem;
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+      }
+
+      .abstract-box {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-label">Linguistic Research Resource</div>
+      <h1>French Verlan: The Art of Back Slang</h1>
+      <p class="hero-subtitle">A comprehensive guide to syllable reversal, linguistic innovation, and contemporary French street language</p>
+      <p class="hero-description">
+        Verlan is a distinctive form of French slang created by reversing the syllables of words. 
+        Born in the Parisian suburbs in the 1980s, it has evolved from underground code to mainstream 
+        linguistic phenomenon, influencing music, cinema, and everyday speech across the Francophone world.
+      </p>
+      <a href="/verlan/" class="hero-cta">Explore Verlan</a>
+    </div>
+  </section>
+
+  <!-- Introduction/Abstract Section -->
+  <section class="pillar-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-number">Research Overview</div>
+        <h2 class="section-title">Understanding French Verlan</h2>
+      </div>
+      <div class="abstract-box">
+        <h3>About This Resource</h3>
+        <p>This comprehensive guide examines verlan from multiple scholarly perspectives—historical development, linguistic mechanisms, cultural significance, and practical application. Through systematic analysis of word formation patterns, sociolinguistic research, and contemporary usage data, we provide both academic rigor and practical utility for language learners, linguists, and Francophiles.</p>
+        <p>The term "verlan" itself demonstrates the mechanism it describes: the French word "l'envers" (meaning "the reverse" or "backwards") becomes "verlan" when its syllables are reversed (ver-lan). This self-referential nature exemplifies the playful ingenuity that characterizes this linguistic phenomenon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillar Navigation Section -->
+  <section class="pillar-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-number">Explore the Topic</div>
+        <h2 class="section-title">Seven Pillars of Verlan</h2>
+      </div>
+      <div class="pillar-grid">
+        <a href="/verlan/" class="pillar-card">
+          <h3>1. Overview</h3>
+          <p>Introduction to verlan fundamentals: definition, basic mechanisms, and contemporary usage contexts across French-speaking regions.</p>
+        </a>
+        <a href="/verlan/history/" class="pillar-card">
+          <h3>2. History & Evolution</h3>
+          <p>Trace verlan's journey from 19th-century linguistic games through 1980s hip-hop culture to modern mainstream adoption.</p>
+        </a>
+        <a href="/verlan/technical-deep-dive/" class="pillar-card">
+          <h3>3. Technical Deep-Dive</h3>
+          <p>Phonological mechanisms, syllable reversal rules, morphological constraints, and comparative linguistics analysis.</p>
+        </a>
+        <a href="/verlan/ontology/" class="pillar-card">
+          <h3>4. Ontology & Knowledge Base</h3>
+          <p>Comprehensive glossary of verlan terms organized by category, frequency, and social register with standard French equivalents.</p>
+        </a>
+        <a href="/verlan/trends/" class="pillar-card">
+          <h3>5. Current Trends & Future</h3>
+          <p>Digital age evolution, social media influence, generational shifts, and predictions for verlan in 2030 and beyond.</p>
+        </a>
+        <a href="/verlan/tools/" class="pillar-card">
+          <h3>6. Tools & Resources</h3>
+          <p>Interactive verlan translator, practice quizzes, pronunciation guides, and practical learning resources.</p>
+        </a>
+        <a href="/verlan/challenges/" class="pillar-card">
+          <h3>7. Challenges & Solutions</h3>
+          <p>Navigate common pitfalls: when not to use verlan, avoiding outdated terms, and integrating it appropriately into your French.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="pillar-section" style="background: #ffffff;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-number">Get Started</div>
+        <h2 class="section-title">Begin Your Verlan Journey</h2>
+      </div>
+      <div style="text-align: center; max-width: 650px; margin: 0 auto;">
+        <p style="font-size: 1.1rem; color: #3a3a3a; margin-bottom: 2rem; line-height: 1.8;">
+          Whether you're a French learner seeking authentic cultural knowledge, a linguist studying 
+          language innovation, or simply curious about how "femme" becomes "meuf" and "lourd" becomes "relou," 
+          this resource provides everything you need to understand and appreciate French verlan.
+        </p>
+        <a href="/verlan/" class="hero-cta">Start with the Overview</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

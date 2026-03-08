@@ -1,0 +1,391 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Verlan Quiz - Test Your Knowledge";
+const description = "Interactive quiz to test your knowledge of French verlan. Multiple difficulty levels with instant scoring.";
+---
+
+<BaseLayout title={title} description={description}>
+  <style>
+    .tool-hero {
+      background: #ffffff;
+      padding: 3rem;
+      border-bottom: 1px solid #e8e6e0;
+      text-align: center;
+    }
+
+    .tool-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+    }
+
+    .tool-hero p {
+      font-size: 1.1rem;
+      color: #5a5a5a;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .tool-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .quiz-box {
+      background: #f8f7f5;
+      padding: 2rem;
+      border: 1px solid #e8e6e0;
+      margin-bottom: 2rem;
+    }
+
+    .difficulty-selector {
+      margin-bottom: 2rem;
+    }
+
+    .difficulty-selector label {
+      display: block;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #2b2b2b;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .difficulty-buttons {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .diff-btn {
+      padding: 0.75rem 1.5rem;
+      background: #ffffff;
+      border: 2px solid #d4d0c8;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .diff-btn:hover, .diff-btn.active {
+      background: #2b2b2b;
+      color: #ffffff;
+      border-color: #2b2b2b;
+    }
+
+    .question-box {
+      background: #ffffff;
+      padding: 2rem;
+      border: 2px solid #2b2b2b;
+      margin: 2rem 0;
+    }
+
+    .question-box h3 {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8a8a8a;
+      margin-bottom: 1rem;
+    }
+
+    .question-text {
+      font-size: 1.5rem;
+      color: #1a1a1a;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .options {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .option-btn {
+      padding: 1rem;
+      background: #f8f7f5;
+      border: 2px solid #e8e6e0;
+      text-align: left;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Crimson Text', Georgia, serif;
+    }
+
+    .option-btn:hover {
+      border-color: #2b2b2b;
+      background: #ffffff;
+    }
+
+    .option-btn.correct {
+      background: #d4edda;
+      border-color: #28a745;
+    }
+
+    .option-btn.incorrect {
+      background: #f8d7da;
+      border-color: #dc3545;
+    }
+
+    .score-display {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.1rem;
+      color: #2b2b2b;
+      margin-bottom: 1rem;
+    }
+
+    .score-display span {
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: #2b2b2b;
+      color: #ffffff;
+      text-decoration: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: #4a4a4a;
+    }
+
+    .btn:disabled {
+      background: #999;
+      cursor: not-allowed;
+    }
+
+    .feedback {
+      padding: 1rem;
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    .feedback.correct {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .feedback.incorrect {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e8e6e0;
+      margin-bottom: 2rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #2b2b2b;
+      transition: width 0.3s;
+    }
+
+    @media (max-width: 968px) {
+      .tool-hero {
+        padding: 2rem;
+      }
+
+      .tool-hero h1 {
+        font-size: 1.75rem;
+      }
+
+      .tool-container {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+
+  <div class="tool-hero">
+    <h1>Verlan Quiz</h1>
+    <p>Test your knowledge of French verlan. Select a difficulty level and answer questions to see how well you know French back slang.</p>
+  </div>
+
+  <div class="tool-container">
+    <div class="quiz-box">
+      <div class="difficulty-selector">
+        <label>Select Difficulty:</label>
+        <div class="difficulty-buttons">
+          <button class="diff-btn active" onclick="setDifficulty('beginner')">Beginner</button>
+          <button class="diff-btn" onclick="setDifficulty('intermediate')">Intermediate</button>
+          <button class="diff-btn" onclick="setDifficulty('advanced')">Advanced</button>
+        </div>
+      </div>
+
+      <div class="score-display" id="score-display">
+        Score: <span id="score">0</span> / <span id="total">0</span>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-bar" style="width: 0%"></div>
+      </div>
+
+      <div id="quiz-content">
+        <div class="question-box">
+          <h3>Question <span id="q-number">1</span></h3>
+          <div class="question-text" id="question-text">Click Start Quiz to begin!</div>
+          <div class="options" id="options"></div>
+          <div class="feedback" id="feedback" style="display: none;"></div>
+        </div>
+        <button class="btn" id="action-btn" onclick="startQuiz()">Start Quiz</button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    const questions = {
+      beginner: [
+        { q: "What is the verlan form of 'femme'?", options: ['meuf', 'femu', 'emfef', 'meffe'], a: 0, feedback: "Femme becomes meuf - one of the most common verlan terms." },
+        { q: "What does 'relou' mean in standard French?", options: ['light', 'heavy', 'happy', 'sad'], a: 1, feedback: "Relou comes from lourd (heavy), but in slang it often means annoying or cringe." },
+        { q: "What is 'ouf' in standard French?", options: ['sad', 'angry', 'crazy', 'tired'], a: 2, feedback: "Ouf comes from fou meaning crazy or insane." },
+        { q: "What does 'keuf' mean?", options: ['friend', 'police', 'teacher', 'parent'], a: 1, feedback: "Keuf is verlan for flic - a slang term for police officer." },
+        { q: "What is 'reum' in standard French?", options: ['father', 'mother', 'brother', 'sister'], a: 1, feedback: "Reum comes from mère meaning mother." },
+        { q: "What does 'meuf' mean?", options: ['man', 'woman', 'child', 'friend'], a: 1, feedback: "Meuf is verlan for femme meaning woman or girlfriend." },
+        { q: "What is 'reuf' in standard French?", options: ['father', 'mother', 'brother', 'sister'], a: 2, feedback: "Reuf comes from frère meaning brother, and is also used for close friends." },
+        { q: "What does 'tepo' mean?", options: ['enemy', 'stranger', 'friend', 'neighbor'], a: 2, feedback: "Tepo is verlan for pote meaning friend or buddy." },
+      ],
+      intermediate: [
+        { q: "What is the verlan form of 'bizarre'?", options: ['zabir', 'zarbi', 'birza', 'razbi'], a: 1, feedback: "Bizarre becomes zarbi in verlan." },
+        { q: "What does 'guedin' mean?", options: ['rich', 'poor', 'crazy', 'smart'], a: 2, feedback: "Guedin is verlan for dingue meaning crazy or wild." },
+        { q: "What is 'beur' in standard French?", options: ['French', 'Arab', 'American', 'Spanish'], a: 1, feedback: "Beur is verlan for arabe. Note: This term has complex social usage - see our glossary." },
+        { q: "What does 'geuar' mean?", options: ['car', 'house', 'money', 'food'], a: 2, feedback: "Geuar is verlan for argent meaning money." },
+        { q: "What is 'renoi' in standard French?", options: ['white', 'black', 'red', 'green'], a: 1, feedback: "Renoi is verlan for noir. This is an identity term - use with caution." },
+        { q: "What does 'reup' mean?", options: ['mother', 'father', 'uncle', 'aunt'], a: 1, feedback: "Reup is verlan for père meaning father." },
+        { q: "What is 'keum' in standard French?", options: ['woman', 'man/guy', 'child', 'old person'], a: 1, feedback: "Keum is verlan for mec meaning guy or dude." },
+        { q: "What does 'chemo' mean?", options: ['beautiful', 'ugly', 'tall', 'short'], a: 1, feedback: "Chemo is verlan for moche meaning ugly." },
+      ],
+      advanced: [
+        { q: "What is 'rebeu' derived from?", options: ['beur (double verlan)', 'beau', 'rebord', 'beret'], a: 0, feedback: "Rebeu is double verlan - verlan of beur, which is itself verlan of arabe." },
+        { q: "What does 'ianch' mean?", options: ['happy', 'annoying', 'sleepy', 'hungry'], a: 1, feedback: "Ianch is verlan for chiant meaning annoying. Note: This is vulgar language." },
+        { q: "What is 'iffeul' in standard French?", options: ['boy', 'girl', 'woman', 'man'], a: 1, feedback: "Iffeul is verlan for fille meaning girl. Less common than meuf." },
+        { q: "What does 'licepo' mean?", options: ['school', 'hospital', 'police', 'library'], a: 2, feedback: "Licepo is verlan for police." },
+        { q: "What is 'zépron' in standard French?", options: ['school', 'prison', 'hospital', 'church'], a: 1, feedback: "Zépron is verlan for prison." },
+        { q: "What does 'vailtra' mean?", options: ['vacation', 'travel', 'work', 'sleep'], a: 2, feedback: "Vailtra is verlan for travail meaning work." },
+        { q: "What is 'guedin' derived from?", options: ['dindon', 'dingue', 'digue', 'dondon'], a: 1, feedback: "Guedin comes from dingue meaning crazy." },
+        { q: "Which term is double verlan?", options: ['meuf', 'beur', 'rebeu', 'keuf'], a: 2, feedback: "Rebeu is double verlan - the verlan of beur, which is the verlan of arabe." },
+      ]
+    };
+
+    let currentDifficulty = 'beginner';
+    let currentQuestion = 0;
+    let score = 0;
+    let quizQuestions = [];
+    let answered = false;
+
+    function setDifficulty(level) {
+      currentDifficulty = level;
+      document.querySelectorAll('.diff-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      resetQuiz();
+    }
+
+    function resetQuiz() {
+      currentQuestion = 0;
+      score = 0;
+      answered = false;
+      document.getElementById('score').textContent = '0';
+      document.getElementById('total').textContent = '0';
+      document.getElementById('progress-bar').style.width = '0%';
+      document.getElementById('question-text').textContent = 'Click Start Quiz to begin!';
+      document.getElementById('options').innerHTML = '';
+      document.getElementById('feedback').style.display = 'none';
+      document.getElementById('action-btn').textContent = 'Start Quiz';
+      document.getElementById('action-btn').onclick = startQuiz;
+    }
+
+    function startQuiz() {
+      quizQuestions = [...questions[currentDifficulty]].sort(() => Math.random() - 0.5);
+      currentQuestion = 0;
+      score = 0;
+      showQuestion();
+    }
+
+    function showQuestion() {
+      answered = false;
+      const q = quizQuestions[currentQuestion];
+      
+      document.getElementById('q-number').textContent = currentQuestion + 1;
+      document.getElementById('question-text').textContent = q.q;
+      document.getElementById('feedback').style.display = 'none';
+      document.getElementById('action-btn').textContent = 'Next Question';
+      document.getElementById('action-btn').disabled = true;
+      
+      const optionsDiv = document.getElementById('options');
+      optionsDiv.innerHTML = '';
+      
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = opt;
+        btn.onclick = () => selectAnswer(idx);
+        optionsDiv.appendChild(btn);
+      });
+      
+      updateProgress();
+    }
+
+    function selectAnswer(selected) {
+      if (answered) return;
+      answered = true;
+      
+      const q = quizQuestions[currentQuestion];
+      const buttons = document.querySelectorAll('.option-btn');
+      
+      buttons.forEach((btn, idx) => {
+        btn.disabled = true;
+        if (idx === q.a) {
+          btn.classList.add('correct');
+        } else if (idx === selected && idx !== q.a) {
+          btn.classList.add('incorrect');
+        }
+      });
+      
+      const feedback = document.getElementById('feedback');
+      if (selected === q.a) {
+        score++;
+        feedback.className = 'feedback correct';
+        feedback.textContent = 'Correct! ' + q.feedback;
+      } else {
+        feedback.className = 'feedback incorrect';
+        feedback.textContent = 'Incorrect. ' + q.feedback;
+      }
+      feedback.style.display = 'block';
+      
+      document.getElementById('score').textContent = score;
+      document.getElementById('total').textContent = currentQuestion + 1;
+      
+      if (currentQuestion < quizQuestions.length - 1) {
+        document.getElementById('action-btn').disabled = false;
+        document.getElementById('action-btn').onclick = () => {
+          currentQuestion++;
+          showQuestion();
+        };
+      } else {
+        document.getElementById('action-btn').textContent = 'Quiz Complete - Restart';
+        document.getElementById('action-btn').disabled = false;
+        document.getElementById('action-btn').onclick = resetQuiz;
+      }
+    }
+
+    function updateProgress() {
+      const progress = ((currentQuestion) / quizQuestions.length) * 100;
+      document.getElementById('progress-bar').style.width = progress + '%';
+    }
+  </script>
+</BaseLayout>

@@ -1,0 +1,468 @@
+---
+import TopicLayout from '../../layouts/TopicLayout.astro';
+
+const title = "Verlan Ontology & Knowledge Base";
+const description = "A comprehensive glossary and taxonomy of French verlan terms organized by category, frequency, and social register with standard French equivalents.";
+
+const relatedTopics = [
+  { title: "Overview", url: "/verlan/" },
+  { title: "Technical Deep-Dive", url: "/verlan/technical-deep-dive/" },
+  { title: "Current Trends", url: "/verlan/trends/" },
+  { title: "Tools & Resources", url: "/verlan/tools/" },
+];
+
+const keyPoints = [
+  "Comprehensive glossary by category",
+  "Frequency and register indicators",
+  "Cross-referenced to standard French",
+  "Etymological notes included",
+];
+---
+
+<TopicLayout 
+  title={title} 
+  description={description}
+  topic="Verlan"
+  pillar="Ontology & Knowledge Base"
+  relatedTopics={relatedTopics}
+  keyPoints={keyPoints}
+>
+  <h2>Introduction to the Verlan Knowledge Base</h2>
+
+  <p>This comprehensive glossary documents French verlan vocabulary as used in contemporary France and Francophone regions. Terms are organized by semantic category and include information about frequency, register (formality level), and regional variation where relevant.</p>
+
+  <p>The classification system used here reflects both linguistic and sociolinguistic factors. Each entry includes the standard French source word, the verlan form, English translation, register indication (Common, Informal, Very Informal/Vulgar), and usage notes. For those seeking to understand the phonological mechanisms behind these transformations, refer to our <a href="/verlan/technical-deep-dive/">Technical Deep-Dive</a>.</p>
+
+  <h2>Register Indicators</h2>
+
+  <p>Understanding when and where to use verlan requires sensitivity to social context. This glossary uses the following register indicators:</p>
+
+  <ul>
+    <li><strong>Common (C):</strong> Widely used across demographics; appropriate in casual conversation with most French speakers</li>
+    <li><strong>Informal (I):</strong> Used in relaxed social situations; avoid in professional or formal contexts</li>
+    <li><strong>Very Informal (VI):</strong> Strongly associated with youth and urban culture; may sound artificial from older speakers</li>
+    <li><strong>Vulgar (V):</strong> Contains profanity or crude references; use with extreme caution</li>
+  </ul>
+
+  <h2>People and Relationships</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Standard French</th>
+        <th>Verlan</th>
+        <th>English</th>
+        <th>Register</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>femme</td>
+        <td>meuf</td>
+        <td>woman / girlfriend</td>
+        <td>Common</td>
+      </tr>
+      <tr>
+        <td>femme (wife)</td>
+        <td>ma meuf</td>
+        <td>my wife/girlfriend</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>homme</td>
+        <td>meu</td>
+        <td>man</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>mec (guy)</td>
+        <td>keum</td>
+        <td>guy / dude</td>
+        <td>Common</td>
+      </tr>
+      <tr>
+        <td>fille</td>
+        <td>iffeul / meuf</td>
+        <td>girl</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>garçon</td>
+        <td>çongar</td>
+        <td>boy</td>
+        <td>Very Informal</td>
+      </tr>
+      <tr>
+        <td>mère</td>
+        <td>reum / reumé</td>
+        <td>mother</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>père</td>
+        <td>reup / reupé</td>
+        <td>father</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>pote (buddy)</td>
+        <td>tepo</td>
+        <td>friend / buddy</td>
+        <td>Common</td>
+      </tr>
+      <tr>
+        <td>ami(e)</td>
+        <td>miams</td>
+        <td>friend</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>copain/copine</td>
+        <td>painco / pineco</td>
+        <td>boyfriend/girlfriend</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>frère</td>
+        <td>reuf</td>
+        <td>brother / bro</td>
+        <td>Common</td>
+      </tr>
+      <tr>
+        <td>soeur</td>
+        <td>reus</td>
+        <td>sister</td>
+        <td>Informal</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Authority and Institutions</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Standard French</th>
+        <th>Verlan</th>
+        <th>English</th>
+        <th>Register</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>flic (cop)</td>
+        <td>keuf</td>
+        <td>police officer</td>
+        <td>Common</td>
+      </tr>
+      <tr>
+        <td>police</td>
+        <td>licepo / lespoil</td>
+        <td>police</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>gendarme</td>
+        <td>darge</td>
+        <td>military police</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>prison</td>
+        <td>zépron</td>
+        <td>prison / jail</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>prisonnier</td>
+        <td>zéprone</td>
+        <td>prisoner</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>juge</td>
+        <td>geuj</td>
+        <td>judge</td>
+        <td>Very Informal</td>
+      </tr>
+      <tr>
+        <td>avocat</td>
+        <td>cat-avo</td>
+        <td>lawyer</td>
+        <td>Very Informal</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Descriptors and Qualities</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Standard French</th>
+        <th>Verlan</th>
+        <th>English</th>
+        <th>Register</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>lourd (heavy)</td>
+        <td>relou</td>
+        <td>annoying / cringe</td>
+        <td>Common</td>
+      </tr>
+      <tr>
+        <td>fou (crazy)</td>
+        <td>ouf</td>
+        <td>crazy / insane / awesome</td>
+        <td>Common</td>
+      </tr>
+      <tr>
+        <td>dingue</td>
+        <td>guedin</td>
+        <td>crazy / wild</td>
+        <td>Common</td>
+      </tr>
+      <tr>
+        <td>zarbi (weird)</td>
+        <td>bizarre</td>
+        <td>weird / strange</td>
+        <td>Common</td>
+      </tr>
+      <tr>
+        <td>bizarre</td>
+        <td>zarbi</td>
+        <td>weird / bizarre</td>
+        <td>Common</td>
+      </tr>
+      <tr>
+        <td>chiant (annoying)</td>
+        <td>ianch</td>
+        <td>annoying / irritating</td>
+        <td>Informal/Vulgar</td>
+      </tr>
+      <tr>
+        <td>beau</td>
+        <td>eaub</td>
+        <td>handsome / beautiful</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>moche</td>
+        <td>chemo</td>
+        <td>ugly</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>stupide</td>
+        <td>pidstu</td>
+        <td>stupid</td>
+        <td>Very Informal</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Money and Commerce</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Standard French</th>
+        <th>Verlan</th>
+        <th>English</th>
+        <th>Register</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>argent</td>
+        <td>geuar / gues</td>
+        <td>money / cash</td>
+        <td>Common</td>
+      </tr>
+      <tr>
+        <td>fric (cash)</td>
+        <td>cri-f</td>
+        <td>cash / dough</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>blé (wheat/slang for money)</td>
+        <td>éblé</td>
+        <td>money</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>thune (slang for money)</td>
+        <td>néthu</td>
+        <td>money</td>
+        <td>Informal</td>
+      </tr>
+      <tr>
+        <td>travail (work)</td>
+        <td>vailtra / boulot</td>
+        <td>work / job</td>
+        <td>Common</td>
+      </tr>
+      <tr>
+        <td>job</td>
+        <td>beuj</td>
+        <td>job</td>
+        <td>Very Informal</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Actions and Verbs</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Standard French</th>
+        <th>Verlan</th>
+        <th>English</th>
+        <th>Register</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>parler (to speak)</td>
+        <td>re-parle</td>
+        <td>to talk / speak</td>
+        <td>Very Informal</td>
+      </tr>
+      <tr>
+        <td>comprendre (to understand)</td>
+        <td>prends-com</td>
+        <td>to understand / get it</td>
+        <td>Very Informal</td>
+      </tr>
+      <tr>
+        <td>regarder (to look)</td>
+        <td>garde-reu</td>
+        <td>to look / check out</td>
+        <td>Very Informal</td>
+      </tr>
+      <tr>
+        <td>écouter (to listen)</td>
+        <td>cout-éc</td>
+        <td>to listen</td>
+        <td>Very Informal</td>
+      </tr>
+      <tr>
+        <td>faire (to do/make)</td>
+        <td>re-fai</td>
+        <td>to do / make</td>
+        <td>Very Informal</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Identity and Background</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Standard French</th>
+        <th>Verlan</th>
+        <th>English</th>
+        <th>Register</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>arabe</td>
+        <td>beur / rebeu</td>
+        <td>Arab / North African (person)</td>
+        <td>Complex*</td>
+      </tr>
+      <tr>
+        <td>arabe (female)</td>
+        <td>beurette</td>
+        <td>Arab woman</td>
+        <td>Complex*</td>
+      </tr>
+      <tr>
+        <td>juif</td>
+        <td>fieu</td>
+        <td>Jewish person</td>
+        <td>Very Informal</td>
+      </tr>
+      <tr>
+        <td>noir (black)</td>
+        <td>renoi</td>
+        <td>Black person</td>
+        <td>Complex*</td>
+      </tr>
+      <tr>
+        <td>blanc (white)</td>
+        <td>ca-blanc</td>
+        <td>white person</td>
+        <td>Very Informal</td>
+      </tr>
+      <tr>
+        <td>français</td>
+        <td>çaisfran</td>
+        <td>French person</td>
+        <td>Very Informal</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><em>*Note on identity terms: Terms like "beur" and "renoi" have complex sociolinguistic status. They originated as in-group terms and their use by outsiders can be problematic. Context and speaker identity significantly affect appropriateness.</em></p>
+
+  <h2>Double Verlan Forms</h2>
+
+  <p>Some verlan terms have undergone "double verlan" (verlan du verlan), creating secondary forms:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Original</th>
+        <th>First Verlan</th>
+        <th>Double Verlan</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>femme</td>
+        <td>meuf</td>
+        <td>feumeu</td>
+        <td>Rare, seen as trying too hard</td>
+      </tr>
+      <tr>
+        <td>arabe</td>
+        <td>beur</td>
+        <td>rebeu</td>
+        <td>Actually common in current usage</td>
+      </tr>
+      <tr>
+        <td>flic</td>
+        <td>keuf</td>
+        <td>feuk</td>
+        <td>Very rare</td>
+      </tr>
+      <tr>
+        <td>mère</td>
+        <td>reum</td>
+        <td>meureu</td>
+        <td>Occasional usage</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Usage Notes and Warnings</h2>
+
+  <p>This glossary is provided for educational and comprehension purposes. Several important caveats apply:</p>
+
+  <ul>
+    <li><strong>Rapid change:</strong> Verlan evolves quickly. Some terms listed here may be dated; new terms emerge constantly.</li>
+    <li><strong>Regional variation:</strong> Usage varies significantly between Paris, Marseille, Lyon, and other regions.</li>
+    <li><strong>Speaker sensitivity:</strong> Non-native speakers using verlan may be perceived as trying too hard or as mocking. Start with receptive understanding before active use.</li>
+    <li><strong>Identity terms:</strong> Extra caution applies to terms for ethnic/religious identity. When in doubt, avoid.</li>
+  </ul>
+
+  <p>For guidance on appropriate usage, see our <a href="/verlan/challenges/">Common Challenges & Solutions</a> page. To practice recognition of these terms, visit our <a href="/verlan/tools/">Tools & Resources</a> section.</p>
+</TopicLayout>
